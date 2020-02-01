@@ -154,7 +154,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.0000024438, y: 0.00000071526}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -1.34, y: -1.46}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &241557164
@@ -177,22 +177,23 @@ MonoBehaviour:
       m_Calls: []
   m_text: Play
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b04bdf5128616dc469324b8de571b957, type: 2}
+  m_sharedMaterial: {fileID: -2542164606781351857, guid: b04bdf5128616dc469324b8de571b957,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4279175682
-  m_fontColor: {r: 0.007843138, g: 0.039215688, b: 0.05882353, a: 1}
-  m_enableVertexGradient: 0
-  m_colorMode: 3
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 1
+  m_colorMode: 2
   m_fontColorGradient:
-    topLeft: {r: 1, g: 1, b: 1, a: 1}
-    topRight: {r: 1, g: 1, b: 1, a: 1}
-    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
-    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+    topLeft: {r: 1, g: 0.88102376, b: 0, a: 1}
+    topRight: {r: 1, g: 0.88102376, b: 0, a: 1}
+    bottomLeft: {r: 1, g: 0.5045948, b: 0, a: 1}
+    bottomRight: {r: 1, g: 0.5045948, b: 0, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
@@ -203,12 +204,12 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 36
+  m_fontSize: 126
   m_fontSizeBase: 36
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_fontSizeMax: 126
   m_fontStyle: 0
   m_textAlignment: 514
   m_characterSpacing: 0
@@ -469,7 +470,7 @@ MonoBehaviour:
         StartDelay: 0
         Duration: 1
     AutoStartLoopAnimation: 1
-    LoadSelectedPresetAtRuntime: 0
+    LoadSelectedPresetAtRuntime: 1
     InstantAnimation: 0
     OnFinished:
       AnimatorEvents: []
@@ -511,8 +512,8 @@ MonoBehaviour:
         SoundName: No Sound
         AudioClip: {fileID: 0}
         OutputAudioMixerGroup: {fileID: 0}
-    PresetCategory: Uncategorized
-    PresetName: Default
+    PresetCategory: Slide
+    PresetName: CardLeft
   HideProgressor: {fileID: 0}
   LoopBehavior:
     Animation:
@@ -743,7 +744,7 @@ MonoBehaviour:
         StartDelay: 0
         Duration: 1
     AutoStartLoopAnimation: 1
-    LoadSelectedPresetAtRuntime: 0
+    LoadSelectedPresetAtRuntime: 1
     InstantAnimation: 0
     OnFinished:
       AnimatorEvents: []
@@ -785,8 +786,8 @@ MonoBehaviour:
         SoundName: No Sound
         AudioClip: {fileID: 0}
         OutputAudioMixerGroup: {fileID: 0}
-    PresetCategory: Uncategorized
-    PresetName: Default
+    PresetCategory: Fade
+    PresetName: InNormal
   ShowProgressor: {fileID: 0}
   TargetOrientation: 2
   UpdateHideProgressorOnShow: 0
@@ -880,8 +881,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 113.479996, y: -16.6}
-  m_SizeDelta: {x: 226.95, y: 197.3}
+  m_AnchoredPosition: {x: 353.3, y: -66.8}
+  m_SizeDelta: {x: 706.7, y: 614.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1217864878
 MonoBehaviour:
@@ -977,10 +978,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -3443,7 +3444,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 2424439388315195084, guid: 2b553d24b88379f46bbacbc95a806a43,
+    type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3586,7 +3588,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.0000024438, y: 0.0000010133}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -1.34, y: -1.46}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1685748714
@@ -3609,22 +3611,23 @@ MonoBehaviour:
       m_Calls: []
   m_text: Credits
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b04bdf5128616dc469324b8de571b957, type: 2}
+  m_sharedMaterial: {fileID: -2542164606781351857, guid: b04bdf5128616dc469324b8de571b957,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4279175682
-  m_fontColor: {r: 0.007843138, g: 0.039215688, b: 0.05882353, a: 1}
-  m_enableVertexGradient: 0
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 1
   m_colorMode: 3
   m_fontColorGradient:
-    topLeft: {r: 1, g: 1, b: 1, a: 1}
-    topRight: {r: 1, g: 1, b: 1, a: 1}
-    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
-    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+    topLeft: {r: 1, g: 0.88102376, b: 0, a: 1}
+    topRight: {r: 1, g: 0.88102376, b: 0, a: 1}
+    bottomLeft: {r: 1, g: 0.5045948, b: 0, a: 1}
+    bottomRight: {r: 1, g: 0.5045948, b: 0, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
@@ -3635,12 +3638,12 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 36
+  m_fontSize: 126
   m_fontSizeBase: 36
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_fontSizeMax: 126
   m_fontStyle: 0
   m_textAlignment: 514
   m_characterSpacing: 0
@@ -6121,7 +6124,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 2424439388315195084, guid: 2b553d24b88379f46bbacbc95a806a43,
+    type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6239,7 +6243,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.0000024438, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -1.34, y: -1.46}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1957646619
@@ -6262,22 +6266,23 @@ MonoBehaviour:
       m_Calls: []
   m_text: Quit
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b04bdf5128616dc469324b8de571b957, type: 2}
+  m_sharedMaterial: {fileID: -2542164606781351857, guid: b04bdf5128616dc469324b8de571b957,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4279175682
-  m_fontColor: {r: 0.007843138, g: 0.039215688, b: 0.05882353, a: 1}
-  m_enableVertexGradient: 0
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 1
   m_colorMode: 3
   m_fontColorGradient:
-    topLeft: {r: 1, g: 1, b: 1, a: 1}
-    topRight: {r: 1, g: 1, b: 1, a: 1}
-    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
-    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+    topLeft: {r: 1, g: 0.88102376, b: 0, a: 1}
+    topRight: {r: 1, g: 0.88102376, b: 0, a: 1}
+    bottomLeft: {r: 1, g: 0.5045948, b: 0, a: 1}
+    bottomRight: {r: 1, g: 0.5045948, b: 0, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
@@ -6288,12 +6293,12 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 36
+  m_fontSize: 126
   m_fontSizeBase: 36
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_fontSizeMax: 126
   m_fontStyle: 0
   m_textAlignment: 514
   m_characterSpacing: 0
@@ -8774,7 +8779,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 2424439388315195084, guid: 2b553d24b88379f46bbacbc95a806a43,
+    type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -8960,7 +8966,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -532, y: 0}
+  m_AnchoredPosition: {x: -1923, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2123399530
@@ -8976,7 +8982,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.12156863, g: 0.53333336, b: 0.7882353, a: 1}
+  m_Color: {r: 0.69803923, g: 0.69803923, b: 0.69803923, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -9019,7 +9025,7 @@ MonoBehaviour:
   AutoHideAfterShow: 0
   AutoHideAfterShowDelay: 3
   AutoSelectButtonAfterShow: 0
-  BehaviorAtStart: 0
+  BehaviorAtStart: 1
   CustomStartAnchoredPosition: {x: 0, y: 0, z: 0}
   DeselectAnyButtonSelectedOnHide: 0
   DeselectAnyButtonSelectedOnShow: 0
@@ -9115,7 +9121,7 @@ MonoBehaviour:
         StartDelay: 0
         Duration: 1
     AutoStartLoopAnimation: 1
-    LoadSelectedPresetAtRuntime: 0
+    LoadSelectedPresetAtRuntime: 1
     InstantAnimation: 0
     OnFinished:
       AnimatorEvents: []
@@ -9157,8 +9163,8 @@ MonoBehaviour:
         SoundName: No Sound
         AudioClip: {fileID: 0}
         OutputAudioMixerGroup: {fileID: 0}
-    PresetCategory: Uncategorized
-    PresetName: Default
+    PresetCategory: Fade
+    PresetName: OutNormal
   HideProgressor: {fileID: 0}
   LoopBehavior:
     Animation:
@@ -9389,7 +9395,7 @@ MonoBehaviour:
         StartDelay: 0
         Duration: 1
     AutoStartLoopAnimation: 1
-    LoadSelectedPresetAtRuntime: 0
+    LoadSelectedPresetAtRuntime: 1
     InstantAnimation: 0
     OnFinished:
       AnimatorEvents: []
@@ -9431,8 +9437,8 @@ MonoBehaviour:
         SoundName: No Sound
         AudioClip: {fileID: 0}
         OutputAudioMixerGroup: {fileID: 0}
-    PresetCategory: Uncategorized
-    PresetName: Default
+    PresetCategory: Slide
+    PresetName: CardRight
   ShowProgressor: {fileID: 0}
   TargetOrientation: 2
   UpdateHideProgressorOnShow: 0

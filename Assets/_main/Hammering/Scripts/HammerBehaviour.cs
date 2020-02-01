@@ -7,16 +7,17 @@ public class HammerBehaviour : MonoBehaviour
     [Header("Hammer")]
     public string useHammerInput;
     public string useHammerAnimTrigger;
+    public Animator anim;
 
-    private Animator anim;
     private GameObject target;
 
     // Inputs
     private bool useHammer;
 
-    private void Start()
+    private void Update()
     {
-        anim = GetComponent<Animator>();
+        GetInputs();
+        ProcessInputs();
     }
 
     public void GetInputs()

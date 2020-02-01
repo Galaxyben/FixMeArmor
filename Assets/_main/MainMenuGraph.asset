@@ -178,7 +178,6 @@ MonoBehaviour:
   m_nodes:
   - {fileID: 8610412198018638368}
   - {fileID: 4324407329601439974}
-  - {fileID: 7764303459574129233}
   - {fileID: -5683149284585247170}
   - {fileID: -9169986452652722486}
   - {fileID: 7853386975781634970}
@@ -186,7 +185,7 @@ MonoBehaviour:
   m_version: 1
   m_description: 
   m_id: 90cd945e-4fdb-40a9-99f6-7a82368cbcd4
-  m_lastModified: 132250594133739995
+  m_lastModified: 132250737224210465
 --- !u!114 &4324407329601439974
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -237,14 +236,7 @@ MonoBehaviour:
       Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   m_outputSockets:
   - m_connectionMode: 0
-    m_connections:
-    - m_inputConnectionPoint: {x: -2, y: 4}
-      m_outputConnectionPoint: {x: 202, y: 4}
-      m_id: e264e91d-a8fc-467a-9fd8-2ede6481e4bb
-      m_inputNodeId: c6b2cecf-287a-4b1d-bca7-a471548214ca
-      m_inputSocketId: b81f6232-90ce-4d87-a832-9fe054c40c9e
-      m_outputNodeId: 37af3b36-d966-462e-a869-8d13cf9d24c1
-      m_outputSocketId: e6f83801-ad53-439c-9223-5ba0a5aa03a5
+    m_connections: []
     m_connectionPoints:
     - {x: -2, y: 4}
     - {x: 202, y: 4}

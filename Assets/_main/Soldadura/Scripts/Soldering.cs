@@ -8,6 +8,7 @@ public class Soldering : MonoBehaviour
     public GameObject soldureBit;
     public float soldureBitRadius;
     public LayerMask layerMask;
+    public int bitCountDesired;
 
     private Transform previousPoint;
     [SerializeField] private List<SolderingBit.Status> statuses = new List<SolderingBit.Status>();
@@ -89,7 +90,8 @@ public class Soldering : MonoBehaviour
         {
             result /= (statuses.Count - foul);
         }
-        return result;
+        float maxPossible = Mathf.Min(bitCountDesired / (statuses.Count - foul), 1);
+        return result * maxPossible;
     }
 
     private void OnValidate()

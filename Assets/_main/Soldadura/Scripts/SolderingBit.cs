@@ -50,7 +50,7 @@ public class SolderingBit : MonoBehaviour
     {
         if (callback != null)
         {
-            Collider[] collision = Physics.OverlapSphere(transform.position - Vector3.up * 0.002f, 0.004f);
+            Collider[] collision = Physics.OverlapSphere(transform.position, transform.localScale.x);
 
             int successScore = 0;
             for (int i = 0; i < collision.Length; i++)

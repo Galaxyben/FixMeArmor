@@ -10,6 +10,10 @@ public class Soldering : WorkStation
     public LayerMask layerMask;
     public int bitCountDesired;
 
+    [Header("Debug")]
+    public bool useAnyways = false;
+
+
     private Transform previousPoint;
     [SerializeField] private List<SolderingBit.Status> statuses = new List<SolderingBit.Status>();
 
@@ -19,6 +23,7 @@ public class Soldering : WorkStation
         //ahora solo falta hacer que se llame Use() en el update de un manager, y que ese manager llame el Use() de los demas puestos de trabajo dependiendo de en cual estas.
         //WorkStation también tiene el delegado WorkEvent, mas abajo en FinishWork() pueden ver como se usa, solo se tendria que suscribir el manager para saber cuando se termino el evento.
         //se podrian suscribir cosas de feedback al evento también
+        if (useAnyways) Use();
     }
 
     public override void Use()

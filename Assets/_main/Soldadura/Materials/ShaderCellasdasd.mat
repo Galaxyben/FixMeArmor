@@ -85,14 +85,14 @@ Material:
     - _NormalPower: 0.5
     - _OcclusionStrength: 1
     - _OutlineGlow: 0
-    - _OutlineWidth: 0.02
+    - _OutlineWidth: 0.04
     - _Parallax: 0.02
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SpecularPower: 0
     - _SpecularSize: 0
     - _SrcBlend: 1
-    - _Steps: 2
+    - _Steps: 4
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:

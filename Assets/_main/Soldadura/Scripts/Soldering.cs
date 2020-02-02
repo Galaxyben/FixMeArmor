@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Soldering : MonoBehaviour
+public class Soldering : WorkStation
 {
     public Transform solderingObject;
     public GameObject soldureBit;
@@ -14,10 +14,10 @@ public class Soldering : MonoBehaviour
     void Update()
     {
         //todo quitar luego yada yada
-        Use();
+        //Use();
     }
 
-    public void Use()
+    public override void Use()
     {
         if (Input.GetMouseButtonDown(0) || Input.GetMouseButton(0))
         {
@@ -47,5 +47,10 @@ public class Soldering : MonoBehaviour
                 }
             }
         }
+    }
+
+    public override float GetScore()
+    {
+        return 0;
     }
 }

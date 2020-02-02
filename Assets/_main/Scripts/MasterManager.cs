@@ -22,12 +22,18 @@ public class MasterManager : MonoBehaviour
 
     public void StartPlaying()
     {
-        SetBake();
+        SetHammering();
     }
 
     void SetBake()
     {
         cm.SetDoF(1.5f);
         cm.SetToBake();
+    }
+
+    void SetHammering()
+    {
+        cm.SetDoF(7f);
+        cm.SetToHamering();
     }
 }

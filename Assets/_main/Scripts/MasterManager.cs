@@ -15,6 +15,7 @@ public class MasterManager : MonoBehaviour
     void Start()
     {
         cm = GetComponent<CameraManager>();
+        cm.SetDoF(0.1f);
     }
     
     void Update()

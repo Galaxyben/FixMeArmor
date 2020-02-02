@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HammerBehaviour : MonoBehaviour
+public class HammerBehaviour : WorkStation
 {
     [Header("Hammer")]
     public string useHammerInput;
     public string useHammerAnimTrigger;
     public Animator anim;
-    public GameObject target;
+    public HammerSpotSpawner target;
     public GameObject sparks;
     public GameObject smoke;
 
@@ -33,13 +33,7 @@ public class HammerBehaviour : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        GetInputs();
-        ProcessInputs();
-    }
-
-    public void SetTarget(GameObject _target)
+    public void SetTarget(HammerSpotSpawner _target)
     {
         target = _target;
     }
@@ -57,19 +51,35 @@ public class HammerBehaviour : MonoBehaviour
 
     public void ProcessInputs()
     {
-        if (useHammer) { Use(); }
+        if (useHammer) { Hammer(); }
     }
 
-    public void Use()
+    public override void Use()
+    {
+        GetInputs();
+        ProcessInputs();
+    }
+
+    public void Hammer()
     {
         if (hittingSpot)
         {
             sparks.GetComponent<Animator>().SetTrigger("PlaySparks");
-            target.GetComponent<HammerSpotSpawner>().AddScore();
+            target.AddScore();
         }
         else
             smoke.GetComponent<Animator>().SetTrigger("PlaySparks");
         anim.SetTrigger(useHammerAnimTrigger);
-        target.GetComponent<HammerSpotSpawner>().SpawnNextSpot();
+        target.SpawnNextSpot();
+
+        if (target.isFinished())
+        {
+            onWorkFinish?.Invoke();
+        }
+    }
+
+    public override float GetScore()
+    {
+        return target.GetScore();
     }
 }

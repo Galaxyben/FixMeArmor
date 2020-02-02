@@ -5,10 +5,12 @@ using UnityEngine;
 public class HammerSpotSpawner : MonoBehaviour
 {
     public GameObject spot;
+    public float spotNo;
 
     private int spawnedSpots = 0;
-    private int score = 0;
+    private float score = 0;
     private Bounds bounds;
+    private bool finished = false;
 
     private GameObject spt;
 
@@ -24,15 +26,20 @@ public class HammerSpotSpawner : MonoBehaviour
         {
             Destroy(spt);
         }
-        if (spawnedSpots < 5)
+        if (spawnedSpots < spotNo)
         {
             spt = Instantiate(spot, transform);
             spt.transform.localPosition = new Vector3(Random.Range(bounds.min.x, bounds.max.x), 5.0f, Random.Range(bounds.min.z, bounds.max.z));
             spawnedSpots++;
         } else
         {
-            Debug.Log("Finished Hammering With A Score Of : " + GetScore());
+            finished = true;
         }
+    }
+
+    public bool isFinished()
+    {
+        return finished;
     }
 
     public void AddScore()
@@ -40,8 +47,8 @@ public class HammerSpotSpawner : MonoBehaviour
         score++;
     }
 
-    public int GetScore()
+    public float GetScore()
     {
-        return score;
+        return score / spotNo;
     }
 }

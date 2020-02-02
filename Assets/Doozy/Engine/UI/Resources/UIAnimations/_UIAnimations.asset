@@ -98,6 +98,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 4c25a292884d6a3469345003ab04a455, type: 2}
     - {fileID: 11400000, guid: dc5ee88b8daa45c429ba98ffc3745618, type: 2}
     - {fileID: 11400000, guid: afd34feedb7785648a169d591f6931e8, type: 2}
+    - {fileID: 11400000, guid: fdfedd252409444479c9f7c9724ba83e, type: 2}
   State:
     DatabaseNames:
     - Basic

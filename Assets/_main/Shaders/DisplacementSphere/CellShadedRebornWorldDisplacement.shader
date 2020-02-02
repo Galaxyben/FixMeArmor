@@ -375,7 +375,7 @@ Shader "Retus001ftNgak/CellShadedDisplacement" {
             UNITY_INSTANCING_BUFFER_START( Props )
                 UNITY_DEFINE_INSTANCED_PROP( float, _DisplacementIntensity)
                 UNITY_DEFINE_INSTANCED_PROP( float, _Noise3DTiling)
-                UNITY_DEFINE_INSTANCED_PROP(float4, _LocalPosition)
+                UNITY_DEFINE_INSTANCED_PROP( float4, _LocalPosition)
             UNITY_INSTANCING_BUFFER_END( Props )
             struct VertexInput {
                 float4 vertex : POSITION;

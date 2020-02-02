@@ -73,6 +73,7 @@ public class NailOven : WorkStation
 
     public void StopCook()
     {
+        Debug.Log("Stop Cook");
         Stop = true;
         CheckIsOK();
         onWorkFinish?.Invoke();

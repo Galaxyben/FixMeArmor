@@ -20,6 +20,8 @@ public class CameraManager : MonoBehaviour
         postProcess.profile.TryGetSettings(out DoF);
         DoF.focusDistance.value = depthOfFieldInitial;
         Camera.main.transform.position = camInitialPos;
+
+        Camera.main.nearClipPlane = 0.1f;
     }
     
     void Update()

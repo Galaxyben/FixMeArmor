@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using Doozy.Engine;
 
 public class WorkStationManager : MonoBehaviour
 {
@@ -70,6 +71,21 @@ public class WorkStationManager : MonoBehaviour
         stations[(int)currentStation].ws?.Use();
     }
 
+    public void NextStation()
+    {
+        var vals = System.Enum.GetValues(typeof(WorkStationName));
+        for(int i = 0; i < vals.Length; i++)
+        {
+            if (i == (int)currentStation)
+            {
+                if(i < vals.Length-1)
+                {
+                    ChangeStation((WorkStationName)(i + 1));
+                }
+            }
+        }
+    }
+
     public void ChangeStation(WorkStationName _nextStation, bool fadeOut = true)
     {
         Debug.Log("Changing station");
@@ -111,7 +127,8 @@ public class WorkStationManager : MonoBehaviour
 
     public void SetStationsStatus(WorkStationName _active)
     {
-        for(int i = 0; i < stations.Length; i++)
+        Debug.Log("Activating " + _active.ToString());
+        for (int i = 0; i < stations.Length; i++)
         {
             bool activate = i == (int)_active;
 
@@ -122,14 +139,16 @@ public class WorkStationManager : MonoBehaviour
             foreach (var go in s.gameObjects)
                 go.SetActive(activate);
 
-            if (activate)
-            {
-                s.ws.onWorkFinish += OnWorkFinished;
-            }
 
-            if(i == (int)currentStation)
+            if (i == (int)currentStation)
             {
                 s.ws.onWorkFinish -= OnWorkFinished; //Unsubscribing from previous
+            }
+
+            if (activate)
+            {
+                Debug.Log("Subscribing to " + s.name);
+                s.ws.onWorkFinish += OnWorkFinished;
             }
         }
         currentStation = _active;
@@ -137,6 +156,8 @@ public class WorkStationManager : MonoBehaviour
 
     public void OnWorkFinished()
     {
+        Debug.Log("Work Finished");
         mm.scores.Add(stations[(int)currentStation].ws.GetScore());
+        GameEventMessage.SendEvent("Finished");
     }
 }

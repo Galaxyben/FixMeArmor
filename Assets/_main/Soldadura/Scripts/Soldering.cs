@@ -4,17 +4,21 @@ using UnityEngine;
 
 public class Soldering : WorkStation
 {
-    public Transform solderingObject;
+    public Collider[] partColliders;
     public GameObject soldureBit;
     public float soldureBitRadius;
     public LayerMask layerMask;
+    public int bitCountDesired;
 
     private Transform previousPoint;
+    [SerializeField] private List<SolderingBit.Status> statuses = new List<SolderingBit.Status>();
 
     void Update()
     {
-        //todo quitar luego yada yada
-        //Use();
+        //Use(); esto no estaba comentado antes de irme a dormir
+        //ahora solo falta hacer que se llame Use() en el update de un manager, y que ese manager llame el Use() de los demas puestos de trabajo dependiendo de en cual estas.
+        //WorkStation también tiene el delegado WorkEvent, mas abajo en FinishWork() pueden ver como se usa, solo se tendria que suscribir el manager para saber cuando se termino el evento.
+        //se podrian suscribir cosas de feedback al evento también
     }
 
     public override void Use()
@@ -23,7 +27,7 @@ public class Soldering : WorkStation
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
-            if(Physics.Raycast(ray, out hit, 10f, layerMask))
+            if (Physics.Raycast(ray, out hit, 10f, layerMask))
             {
                 bool instantiate = false;
                 if (previousPoint) //Para el primer punto que se pone porque siempre empieza en null
@@ -38,19 +42,70 @@ public class Soldering : WorkStation
                     instantiate = true;
                 }
 
-                if(instantiate)
+                if (instantiate)
                 {
                     GameObject go = Instantiate(soldureBit, hit.point, Quaternion.identity, hit.collider.transform);
                     go.transform.localScale = Vector3.Scale(go.transform.localScale, new Vector3(1f / hit.collider.transform.localScale.x, 1f / hit.collider.transform.localScale.y, 1f / hit.collider.transform.localScale.z)); //Normalizing scale
                     go.transform.rotation = Quaternion.LookRotation(Vector3.Cross(hit.normal, Vector3.right), hit.normal) * go.transform.rotation;
                     previousPoint = go.transform;
+
+                    //Soldure setup
+                    SolderingBit sb = go.GetComponent<SolderingBit>();
+                    if (sb)
+                    {
+                        foreach (var c in partColliders)
+                        {
+                            sb.AddPartCollider(c);
+                        }
+                        sb.SetCallback(AddBitStatus);
+                    }
                 }
             }
         }
     }
 
+    void AddBitStatus(SolderingBit.Status _status)
+    {
+        statuses.Add(_status);
+    }
+
+    public void FinishJob()
+    {
+        onWorkFinish?.Invoke();
+    }
+
     public override float GetScore()
     {
-        return 0;
+        float result = 0;
+        int foul = 0;
+        foreach (var s in statuses)
+        {
+            switch (s)
+            {
+                case SolderingBit.Status.SUCCESSFUL:
+                    result++;
+                    break;
+                case SolderingBit.Status.BAD_ON_TARGET:
+                    result -= 0.2f;
+                    break;
+                case SolderingBit.Status.OFF_TARGET:
+                    foul++;
+                    break;
+            }
+        }
+        if (statuses.Count > foul)
+        {
+            result /= (statuses.Count - foul);
+        }
+        float maxPossible = Mathf.Min(bitCountDesired / (statuses.Count - foul), 1);
+        return result * maxPossible;
+    }
+
+    private void OnValidate()
+    {
+        if (!soldureBit.GetComponent<SolderingBit>())
+        {
+            soldureBit = null;
+        }
     }
 }

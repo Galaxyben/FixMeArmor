@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Doozy.Engine.Progress;
+using UnityEngine.UI;
+using TMPro;
 
 public class NailOven : WorkStation
 {
@@ -19,6 +21,9 @@ public class NailOven : WorkStation
     public bool okay, toLate;
     [Header("Animator")]
     public Animator anim;
+    public Image img;
+    public Sprite[] lingotes;
+    public TextMeshProUGUI textResult;
     [Header("COSAS DEL PEPE")]
     public Progressor progressor;
     
@@ -80,18 +85,30 @@ public class NailOven : WorkStation
             toEarly = true;
             okay = false;
             toLate = false;
+            img.sprite = lingotes[0];
+            img.color = Color.white;
+            img.gameObject.SetActive(true);
+            textResult.text = "To Early";
         }
         else if(currentTime >= timeRangeSucces.x && currentTime <= timeRangeSucces.y)
         {
             okay = true;
             toLate = false;
             toEarly = false;
+            img.sprite = lingotes[1];
+            img.color = Color.white;
+            img.gameObject.SetActive(true);
+            textResult.text = "Excelent";
         }
         else
         {
             toLate = true;
             okay = false;
             toEarly = false;
+            img.sprite = lingotes[0];
+            img.color = new Color(0.2349873f, 0.23487f, 0.245283f);
+            img.gameObject.SetActive(true);
+            textResult.text = "To Late";
         }
     }
 

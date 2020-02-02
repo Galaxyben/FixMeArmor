@@ -74,7 +74,7 @@ Material:
     - _DstBlend: 0
     - _EmissionPannX: 0
     - _EmissionPannY: 0
-    - _EmissionPower: 2.08
+    - _EmissionPower: 2
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1

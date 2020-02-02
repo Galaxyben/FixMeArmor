@@ -22,18 +22,33 @@ public class MasterManager : MonoBehaviour
 
     public void StartPlaying()
     {
-        SetHammering();
+        SetSoldering();
     }
 
     void SetBake()
     {
         cm.SetDoF(1.5f);
         cm.SetToBake();
+        hammeringGame.SetActive(false);
+        solderingGame.SetActive(false);
+        bakingGame.SetActive(true);
     }
 
     void SetHammering()
     {
         cm.SetDoF(7f);
         cm.SetToHamering();
+        hammeringGame.SetActive(true);
+        solderingGame.SetActive(false);
+        bakingGame.SetActive(false);
+    }
+
+    void SetSoldering()
+    {
+        cm.SetDoF(7f);
+        cm.SetToSoldering();
+        hammeringGame.SetActive(false);
+        solderingGame.SetActive(true);
+        bakingGame.SetActive(false);
     }
 }

@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using DG.Tweening;
 using Doozy.Engine.Progress;
 
 public class NailOven : MonoBehaviour
@@ -12,10 +11,15 @@ public class NailOven : MonoBehaviour
     public Vector2 timeRangeSucces;
     public GameObject nail;
     bool Stop = false;
-    bool isOpen = false;
+    [SerializeField]
+    bool isOpen = true;
+    bool firtTime = true;
     [Header("Data COOK")]
     public bool toEarly; 
     public bool okay, toLate;
+    [Header("Animator")]
+    public Animator anim;
+    [Header("COSAS DEL PEPE")]
     public Progressor progressor;
     
     void Start()
@@ -31,12 +35,37 @@ public class NailOven : MonoBehaviour
         timeRangeSucces.x = Mathf.Floor(goalTime - omega);
         timeRangeSucces.y = Mathf.Ceil(goalTime + omega);
     }
+
+    public void ChangeState()
+    {
+        if(firtTime)
+        {
+            anim.SetTrigger("OpenOven");
+            firtTime = false;
+        }
+        else if(!firtTime && isOpen)
+        {
+            anim.SetTrigger("CloseOven");
+            Invoke("ChangeStateOven", 1.5f);
+        }
+        else if (!firtTime && !isOpen)
+        {
+            anim.SetTrigger("OpenOven");
+            StopCook();
+            isOpen = true;
+        }
+    }
+
+    public void ChangeStateOven()
+    {
+        isOpen = false;
+    }
     
     void Update()
     {
         progressor.SetValue(currentTime);
 
-        if (currentTime <= maxTime && !Stop)
+        if (currentTime <= maxTime && !Stop && !isOpen)
         {
             currentTime += Time.deltaTime;
         }
@@ -53,7 +82,6 @@ public class NailOven : MonoBehaviour
     public void StopCook()
     {
         Stop = true;
-        //nail.transform.DOKill();
         CheckIsOK();
     }
 

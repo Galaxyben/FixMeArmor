@@ -10,6 +10,8 @@ public class MasterManager : MonoBehaviour
     public GameObject solderingGame;
     public GameObject bakingGame;
 
+    public List<float> scores = new List<float>();
+
     void Start()
     {
         cm = GetComponent<CameraManager>();
@@ -22,33 +24,34 @@ public class MasterManager : MonoBehaviour
 
     public void StartPlaying()
     {
-        SetBake();
+        SetSoldering();
+        scores.Clear();
     }
 
-    void SetBake()
+    public void SetBake()
     {
         cm.SetDoF(1.5f);
         cm.SetToBake();
-        hammeringGame.SetActive(false);
-        solderingGame.SetActive(false);
-        bakingGame.SetActive(true);
+        hammeringGame?.SetActive(false);
+        solderingGame?.SetActive(false);
+        bakingGame?.SetActive(true);
     }
 
-    void SetHammering()
+    public void SetHammering()
     {
         cm.SetDoF(7f);
         cm.SetToHamering();
-        hammeringGame.SetActive(true);
-        solderingGame.SetActive(false);
-        bakingGame.SetActive(false);
+        hammeringGame?.SetActive(true);
+        solderingGame?.SetActive(false);
+        bakingGame?.SetActive(false);
     }
 
-    void SetSoldering()
+    public void SetSoldering()
     {
         cm.SetDoF(0.31f);
         cm.SetToSoldering();
-        hammeringGame.SetActive(false);
-        solderingGame.SetActive(true);
-        bakingGame.SetActive(false);
+        hammeringGame?.SetActive(false);
+        solderingGame?.SetActive(true);
+        bakingGame?.SetActive(false);
     }
 }

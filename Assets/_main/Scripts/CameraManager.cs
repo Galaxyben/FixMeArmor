@@ -8,6 +8,7 @@ public class CameraManager : MonoBehaviour
     public PostProcessVolume postProcess;
     float depthOfFieldInitial = 1.1f;
     float depthOfFieldStandard = 15f;
+    Vector3 camInitialPos = new Vector3(7.388f, 1.98f, -6.64f);
     DepthOfField DoF;
 
     public Transform hammeringCamPos;
@@ -17,6 +18,8 @@ public class CameraManager : MonoBehaviour
     void Start()
     {
         postProcess.profile.TryGetSettings(out DoF);
+        DoF.focusDistance.value = depthOfFieldInitial;
+        Camera.main.transform.position = camInitialPos;
     }
     
     void Update()
@@ -50,5 +53,10 @@ public class CameraManager : MonoBehaviour
     public void DoF_Blur()
     {
         DoF.focusDistance.value = depthOfFieldInitial;
+    }
+
+    public void SetDoF(float val)
+    {
+        DoF.focusDistance.value = val;
     }
 }

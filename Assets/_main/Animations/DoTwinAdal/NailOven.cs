@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using Doozy.Engine.Progress;
 
 public class NailOven : MonoBehaviour
 {
@@ -15,12 +16,12 @@ public class NailOven : MonoBehaviour
     [Header("Data COOK")]
     public bool toEarly; 
     public bool okay, toLate;
-
-
-    // Start is called before the first frame update
+    public Progressor progressor;
+    
     void Start()
     {
         Init();
+        progressor.SetMax(maxTime);
         //StartCook();
     }
 
@@ -30,10 +31,11 @@ public class NailOven : MonoBehaviour
         timeRangeSucces.x = Mathf.Floor(goalTime - omega);
         timeRangeSucces.y = Mathf.Ceil(goalTime + omega);
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
+        progressor.SetValue(currentTime);
+
         if (currentTime <= maxTime && !Stop)
         {
             currentTime += Time.deltaTime;
@@ -51,7 +53,7 @@ public class NailOven : MonoBehaviour
     public void StopCook()
     {
         Stop = true;
-        nail.transform.DOKill();
+        //nail.transform.DOKill();
         CheckIsOK();
     }
 
@@ -79,6 +81,6 @@ public class NailOven : MonoBehaviour
 
     public void StartCook()
     {
-        nail.transform.DORotate(new Vector3(0.0f, 0.0f, 450.0f), maxTime, RotateMode.FastBeyond360);
+        //nail.transform.DORotate(new Vector3(0.0f, 0.0f, 450.0f), maxTime, RotateMode.FastBeyond360);
     }
 }

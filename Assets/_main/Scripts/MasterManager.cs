@@ -22,7 +22,12 @@ public class MasterManager : MonoBehaviour
 
     public void StartPlaying()
     {
-        cm.DoF_Standard();
-        cm.SetToSoldering();
+        SetBake();
+    }
+
+    void SetBake()
+    {
+        cm.SetDoF(1.5f);
+        cm.SetToBake();
     }
 }

@@ -45,7 +45,7 @@ public class MasterManager : MonoBehaviour
 
     void SetSoldering()
     {
-        cm.SetDoF(7f);
+        cm.SetDoF(0.31f);
         cm.SetToSoldering();
         hammeringGame.SetActive(false);
         solderingGame.SetActive(true);

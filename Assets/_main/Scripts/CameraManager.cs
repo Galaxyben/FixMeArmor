@@ -9,7 +9,7 @@ public class CameraManager : MonoBehaviour
     float depthOfFieldInitial = 1.1f;
     float depthOfFieldStandard = 15f;
     Vector3 camInitialPos = new Vector3(7.388f, 1.98f, -6.64f);
-    DepthOfField DoF;
+    [System.NonSerialized]public DepthOfField DoF;
 
     public Transform hammeringCamPos;
     public Transform solderingCamPos;

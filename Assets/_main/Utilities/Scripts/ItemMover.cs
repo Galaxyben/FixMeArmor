@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemExaminer : MonoBehaviour
+public class ItemMover : MonoBehaviour
 {
     public Transform item;
     public float sensitivity;
@@ -19,20 +19,18 @@ public class ItemExaminer : MonoBehaviour
 
     public void Use()
     {
-        if(Input.GetMouseButtonDown(1))
+        if(Input.GetMouseButtonDown(0))
         {
             previousMousePos = Input.mousePosition;
         }
-        if(Input.GetMouseButton(1))
+        if(Input.GetMouseButton(0))
         {
             Vector2 currentPosition = Input.mousePosition;
             Vector2 deltaPos = previousMousePos - currentPosition;
 
-            Vector3 camRight = Vector3.ProjectOnPlane(Camera.main.transform.right, Vector3.up);
-            //Vector3 eulers = new Vector3(0, deltaPos.x, -deltaPos.y)*sensitivity;
-            Vector3 eulers = (Vector3.up * (freezeY ? 0 : deltaPos.x) + camRight * (freezeX ? 0 : deltaPos.y)) * sensitivity;
+            Vector3 translate = new Vector3(freezeX ? 0 : deltaPos.x, 0, freezeY ? 0 : deltaPos.y) * -sensitivity;
 
-            item.Rotate(eulers * Time.deltaTime, Space.World);
+            item.Translate(translate * Time.deltaTime, Space.World);
 
             //TODO: cambiar a que sea relativo a la camara talvez
 

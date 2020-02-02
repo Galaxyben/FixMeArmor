@@ -35,10 +35,12 @@ public class WorkStationManager : MonoBehaviour
     public Image fade;
     [Header("Settings")]
     public WorkStationObjects[] stations = new WorkStationObjects[System.Enum.GetNames(typeof(WorkStationName)).Length];
+    public float fadeTime = 0.8f;
     [Header("Watches")]
     public WorkStationName currentStation;
 
     private Sequence sequence;
+    private bool isSequenceRunning = false;
 
     private void OnValidate()
     {
@@ -59,6 +61,8 @@ public class WorkStationManager : MonoBehaviour
     {
         fade.color = new Color(0, 0, 0, 0);
         fade.gameObject.SetActive(false);
+        sequence = DOTween.Sequence();
+        ChangeStation(currentStation, false);
     }
 
     private void Update()
@@ -66,20 +70,24 @@ public class WorkStationManager : MonoBehaviour
         stations[(int)currentStation].ws?.Use();
     }
 
-    public void ChangeStation(WorkStationName _nextStation)
+    public void ChangeStation(WorkStationName _nextStation, bool fadeOut = true)
     {
-        if (_nextStation == currentStation || sequence.active)
+        Debug.Log("Changing station");
+        if (isSequenceRunning)
         {
-            if (!sequence.active)
-                Debug.Log("Requesting to change to the current workStation");
-            else
-                Debug.Log("Requesting a work station change while a change is ongoing");
+            Debug.Log("Requesting a work station change while a change is ongoing");
             return;
         }
 
         sequence = DOTween.Sequence();
         fade.gameObject.SetActive(true);
-        sequence.Append(fade.DOColor(new Color(0, 0, 0, 1), 0.6f));
+        if (fadeOut)
+        {
+            sequence.Append(fade.DOColor(Color.black, fadeTime));
+        }
+        else {
+            fade.color = Color.black;
+        }
 
         switch (_nextStation)
         {
@@ -94,8 +102,11 @@ public class WorkStationManager : MonoBehaviour
                 break;
         }
 
-        sequence.Append(fade.DOColor(new Color(0, 0, 0, 0), 6f));
+        sequence.Append(fade.DOColor(new Color(0, 0, 0, 0), fadeTime));
         sequence.AppendCallback(() => fade.gameObject.SetActive(false));
+        sequence.OnComplete(() => isSequenceRunning = false);
+        sequence.Play();
+        isSequenceRunning = true;
     }
 
     public void SetStationsStatus(WorkStationName _active)

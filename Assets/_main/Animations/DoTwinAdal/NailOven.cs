@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Doozy.Engine.Progress;
 
-public class NailOven : MonoBehaviour
+public class NailOven : WorkStation
 {
     public float maxTime, goalTime, currentTime;
     [Range(0.0f, 100.0f)]
@@ -63,26 +63,14 @@ public class NailOven : MonoBehaviour
     
     void Update()
     {
-        progressor.SetValue(currentTime);
-
-        if (currentTime <= maxTime && !Stop && !isOpen)
-        {
-            currentTime += Time.deltaTime;
-        }
-        if (currentTime > maxTime)
-        {
-            StopCook();
-        }
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            StopCook();
-        }
+        
     }
 
     public void StopCook()
     {
         Stop = true;
         CheckIsOK();
+        onWorkFinish?.Invoke();
     }
 
     public void CheckIsOK()
@@ -110,5 +98,33 @@ public class NailOven : MonoBehaviour
     public void StartCook()
     {
         //nail.transform.DORotate(new Vector3(0.0f, 0.0f, 450.0f), maxTime, RotateMode.FastBeyond360);
+    }
+
+    public override void Use()
+    {
+        progressor.SetValue(currentTime);
+
+        if (currentTime <= maxTime && !Stop && !isOpen)
+        {
+            currentTime += Time.deltaTime;
+        }
+        if (currentTime > maxTime)
+        {
+            StopCook();
+        }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            StopCook();
+        }
+    }
+
+    public override float GetScore()
+    {
+        if (toEarly || toLate)
+            return 0;
+        else if (okay)
+            return 1;
+        else
+            return 0;
     }
 }

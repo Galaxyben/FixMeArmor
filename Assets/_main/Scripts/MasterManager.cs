@@ -6,6 +6,10 @@ public class MasterManager : MonoBehaviour
 {
     CameraManager cm;
 
+    public GameObject hammeringGame;
+    public GameObject solderingGame;
+    public GameObject bakingGame;
+
     void Start()
     {
         cm = GetComponent<CameraManager>();
@@ -18,6 +22,7 @@ public class MasterManager : MonoBehaviour
 
     public void StartPlaying()
     {
-
+        cm.DoF_Standard();
+        cm.SetToSoldering();
     }
 }

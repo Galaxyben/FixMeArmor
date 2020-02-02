@@ -18,7 +18,9 @@ MonoBehaviour:
   - Example
   - General
   - MainMenu
+  - Gameplay
   Categories:
   - {fileID: 11400000, guid: b01e98f4801f7124ba39e1dac4debf90, type: 2}
   - {fileID: 11400000, guid: 518995b1328e5874888282f953fd041a, type: 2}
   - {fileID: 11400000, guid: 8521d0c782b1e6d45829a2115e6a1a98, type: 2}
+  - {fileID: 11400000, guid: 766d06e708f649843a811f729cd39e0b, type: 2}

@@ -22,7 +22,7 @@ public class MasterManager : MonoBehaviour
 
     public void StartPlaying()
     {
-        SetSoldering();
+        SetBake();
     }
 
     void SetBake()

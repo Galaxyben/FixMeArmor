@@ -357,10 +357,31 @@ MonoBehaviour:
   m_id: ee9683b8-712e-4756-b54f-442679da50a8
   m_name: BeginPlay
   m_notes: 
-  m_onEnterShowViews: []
-  m_onEnterHideViews: []
+  m_onEnterShowViews:
+  - Category: Gameplay
+    InstantAction: 0
+    Name: IntroductionPanel
+  m_onEnterHideViews:
+  - Category: Gameplay
+    InstantAction: 0
+    Name: Baking
+  - Category: Gameplay
+    InstantAction: 0
+    Name: Hammering
+  - Category: Gameplay
+    InstantAction: 0
+    Name: ScorePanel
+  - Category: Gameplay
+    InstantAction: 0
+    Name: Soldering
+  - Category: MainMenu
+    InstantAction: 0
+    Name: MainMenu
   m_onExitShowViews: []
-  m_onExitHideViews: []
+  m_onExitHideViews:
+  - Category: Gameplay
+    InstantAction: 0
+    Name: IntroductionPanel
 --- !u!114 &4324407329601439974
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -923,4 +944,7 @@ MonoBehaviour:
     InstantAction: 0
     Name: MainMenu
   m_onExitShowViews: []
-  m_onExitHideViews: []
+  m_onExitHideViews:
+  - Category: Gameplay
+    InstantAction: 0
+    Name: Baking
